@@ -10,6 +10,7 @@
 * [x] 全局变量
 * [x] 生产环境以及开发环境打包配置
 * [x] 热更新
+* [x] 支持proxy请求配置
 * [x] 引入lib-flexible和 px2rem-loader 适配rem
 
 
