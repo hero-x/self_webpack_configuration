@@ -4,7 +4,7 @@
   "description": "webpack herox 自用版",
   "scripts": {
     "build": "webpack --mode production",
-    "start": "webpack-dev-server --mode development"
+    "dev": "webpack-dev-server --mode development"
   },
   "author": "herox me0809@yeah.net",
   "license": "MIT",
@@ -21,7 +21,9 @@
     "image-webpack-loader": "^4.2.0",
     "less": "^3.0.1",
     "less-loader": "^4.1.0",
+    "lib-flexible": "^0.3.2",
     "postcss-loader": "^3.0.0",
+    "px2rem-loader": "^0.1.9",
     "style-loader": "^0.20.3",
     "webpack": "^4.4.1",
     "webpack-cli": "^3.1.0",

@@ -40,6 +40,12 @@ module.exports = {
               }
             },
             {
+              loader: 'px2rem-loader',
+              options: {
+                remUnit: 37.5  //1rem=多少像素 这里的设计稿是750px。
+              }          
+            },
+            {
               loader: "postcss-loader",
               options: {
                 plugins: [require('autoprefixer')] // 添加css中的浏览器前缀

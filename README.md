@@ -10,12 +10,12 @@
 * [x] 全局变量
 * [x] 生产环境以及开发环境打包配置
 * [x] 热更新
-* [ ] 加入适配 rem或者vw版
+* [x] 引入lib-flexible和 px2rem-loader 适配rem
 
 
 ### 开发环境
 
-`npm run start`
+`npm run dev`
 
 
 ### 生产环境
