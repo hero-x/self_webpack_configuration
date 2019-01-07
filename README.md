@@ -20,4 +20,4 @@
 
 ### 生产环境
 
-`npm run dev`
+`npm run build`
