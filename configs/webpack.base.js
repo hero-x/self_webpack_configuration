@@ -11,11 +11,6 @@ module.exports = {
     // filename: 'js/bundle-[hash].js'
     filename: 'js/[name]-[hash].js'
   },
-  // devServer: {
-  //   contentBase: "./public",//本地服务器所加载的页面所在的目录
-  //   historyApiFallback: true,//不跳转
-  //   inline: true//实时刷新
-  // },
   module: {
     noParse: /jquery|lodash/, // 正则表达式 作用  不解析  提高速度 这么理解，其实大部分可以直接用 script 引入的类库，都可以使用 noParse 来优化，因为这些类库相对独立
     rules: [
@@ -30,16 +25,29 @@ module.exports = {
         },
       },
       {
-        test: /\.(png|jpg|gif)$/,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              publicPath: '../assets/',
-              outputPath:'/assets/'
-            }  
-          }
-        ]
+        test: /\.mp4$/,
+        loader: 'file-loader',
+      },
+      {
+        test: /\.less$/,
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: [
+            {
+              loader: 'css-loader',
+              options: {
+                minimize: true
+              }
+            },
+            {
+              loader: "postcss-loader",
+              options: {
+                plugins: [require('autoprefixer')] // 添加css中的浏览器前缀
+              }
+            },
+            'less-loader',
+          ]
+        }),
       }
     ],
   },
@@ -74,12 +82,5 @@ module.exports = {
         APP_VERSION: JSON.stringify('1.1.2') // const CONSTANTS = { APP_VERSION: '1.1.2' }
       }
     }),
-  ],
-  // proxy 用于配置 webpack-dev-server 将特定 URL 的请求代理到另外一台服务器上。当你有单独的后端开发服务器用于请求 API 时，这个配置相当有用
-  // proxy: {
-  //   '/api': {
-  //     target: "http://localhost:3001", // 将 URL 中带有 /api 的请求代理到本地的 3001 端口的服务上
-  //     pathRewrite: { '^/api': '' }, // 把 URL 中 path 部分的 `api` 移除掉
-  //   },
-  // }
+  ]
 }

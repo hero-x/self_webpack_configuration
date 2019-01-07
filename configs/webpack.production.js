@@ -14,25 +14,16 @@ const config = merge.smart(baseConfig, {
   module: {
     rules: [
       {
-        test: /\.less$/,
-        use: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: [
-            {
-              loader: 'css-loader',
-              options: {
-                minimize: true
-              }
-            },
-            {
-              loader: "postcss-loader",
-              options: {
-                plugins: [require('autoprefixer')] // 添加css中的浏览器前缀
-              }
-            },
-            'less-loader',
-          ]
-        }),
+        test: /\.(png|jpg|gif)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              publicPath: '../assets/',
+              outputPath:'/assets/'
+            }  
+          }
+        ]
       },
     ],
   },
